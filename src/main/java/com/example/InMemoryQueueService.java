@@ -12,6 +12,8 @@ public class InMemoryQueueService implements QueueService {
 
   private long visibilityTimeout;
 
+  private PriorityQueue<Integer> priorityQueue= new PriorityQueue<>();
+
   InMemoryQueueService() {
     this.queues = new ConcurrentHashMap<>();
     String propFileName = "config.properties";
@@ -72,6 +74,24 @@ public class InMemoryQueueService implements QueueService {
       }
     }
   }
+
+// implementation of priority queue
+  public int enqueuePQ(int s)
+  {
+    priorityQueue.add(s);
+    return s;
+  }
+
+
+  public  int dequeuePQ()
+  {
+    int x=priorityQueue.poll();
+    return x;
+  }
+
+
+
+
 
   long now() {
     return System.currentTimeMillis();
