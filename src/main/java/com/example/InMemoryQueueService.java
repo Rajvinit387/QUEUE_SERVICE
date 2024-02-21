@@ -90,6 +90,15 @@ public class InMemoryQueueService implements QueueService {
   }
 
 
+  public int sizePQ() {
+    return priorityQueue.size();
+  }
+
+  // Check if the queue is empty
+  public boolean isEmptyPQ() {
+    return priorityQueue.size() == 0;
+  }
+
 
 
 
